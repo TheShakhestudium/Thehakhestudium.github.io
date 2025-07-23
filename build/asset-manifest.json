@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/TheShakhestudium/static/css/main.1d4cab10.css",
+    "main.js": "/TheShakhestudium/static/js/main.84c5e5e1.js",
+    "index.html": "/TheShakhestudium/index.html",
+    "main.1d4cab10.css.map": "/TheShakhestudium/static/css/main.1d4cab10.css.map",
+    "main.84c5e5e1.js.map": "/TheShakhestudium/static/js/main.84c5e5e1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1d4cab10.css",
+    "static/js/main.84c5e5e1.js"
+  ]
+}
