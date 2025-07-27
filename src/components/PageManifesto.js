@@ -1,90 +1,64 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
-const PageManifesto = ({ language = 'es' }) => {
-  const content = {
-    es: {
-      title: 'Manifiesto',
-      text1: 'En THESHAKHESTUDIUM exploramos la transformación integral con un enfoque sistemático y analítico. Cuestionamos convicciones heredadas, tabúes institucionales y relatos oficiales, y facilitamos el descubrimiento colaborativo de realidades ocultas mediante procesos participativos y diálogo constructivo.',
-      text2: 'Nuestros valores corporativos —Honestidad, Veracidad y Empatía— orientan cada fase de nuestro enfoque:',
-      text3: 'Honestidad: compartimos metodologías y procesos con total transparencia.',
-      text4: 'Veracidad: fundamentamos nuestra exploración en datos precisos y fuentes fiables.',
-      text5: 'Empatía: creamos espacios que integran perspectivas diversas y fomentan el consenso.',
-      text6: 'En cada episodio, artículo e imagen, planteamos preguntas transformadoras que invitan a:',
-      text7: 'Detectar grietas en sus propios marcos mentales.',
-      text8: 'Desencadenar ideas innovadoras y disruptivas.',
-      text9: 'Co-crear narrativas que trasciendan el consenso cómodo.',
-      text10: 'En lugar de ofrecer fórmulas universales, nuestro propósito es generar diálogo crítico y cocreación de conocimiento.',
-      text11: 'Como colaborador estratégico en procesos de cambio profundo, combinamos análisis riguroso con métodos participativos —respaldados por rigor académico y diseño reflexivo— para orientar perspectivas en evolución e inspirar acciones conscientes.',
-    },
-    en: {
-      title: 'Manifesto',
-      text1: 'At THESHAKHESTUDIUM we explore integral transformation through a systematic, analytical lens. We question inherited convictions, institutional taboos and official narratives, and facilitate the collaborative discovery of hidden realities via participatory processes and constructive dialogue.',
-      text2: 'Our corporate values—Honesty, Truthfulness, and Empathy—inform every phase of our approach:',
-      text3: 'Honesty: sharing our methodologies and processes with full transparency.',
-      text4: 'Truthfulness: grounding our exploration in accurate data and reliable sources.',
-      text5: 'Empathy: creating spaces that integrate diverse perspectives and foster consensus.',
-      text6: 'In each episode, article, and image, we pose transformative questions that empower individuals and organizations to:',
-      text7: 'Spot the cracks in their mental frameworks.',
-      text8: 'Spark disruptive innovation.',
-      text9: 'Co-create narratives that go beyond comfortable consensus.',
-      text10: 'Rather than offering universal formulas, we aim to spark critical dialogue and collaborative knowledge creation.',
-      text11: 'As a strategic collaborator in processes of deep change, we blend rigorous analysis with participatory methods—supported by academic rigor and thoughtful design—to guide evolving perspectives and inspired action.',
-    },
-  };
-
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-up');
-          } else {
-            entry.target.classList.remove('animate-fade-in-up');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  return (
-    <section ref={sectionRef} className="container mx-auto px-4 py-16 pt-24 opacity-0 transform translate-y-10 transition-all duration-1000 ease-out">
-      <div className="bg-[#0A0A0A] rounded-2xl shadow-xl p-8 md:p-12 lg:p-16">
-        <h2 className="text-4xl font-playfair font-semibold text-[#BD9435] mb-8 text-center">
-          {content[language].title}
-        </h2>
-        <div className="space-y-6 text-[#FFF9ED] text-lg font-inter leading-relaxed">
-          <p>{content[language].text1}</p>
-          <p>{content[language].text2}</p>
-          <ul className="list-disc list-inside ml-4 space-y-2">
-            <li>{content[language].text3}</li>
-            <li>{content[language].text4}</li>
-            <li>{content[language].text5}</li>
-          </ul>
-          <p>{content[language].text6}</p>
-          <ul className="list-disc list-inside ml-4 space-y-2">
-            <li>{content[language].text7}</li>
-            <li>{content[language].text8}</li>
-            <li>{content[language].text9}</li>
-          </ul>
-          <p>{content[language].text10}</p>
-          <p>{content[language].text11}</p>
-        </div>
-      </div>
-    </section>
-  );
+const manifestoContent = {
+  es: {
+    titulo: "Manifiesto",
+    parrafos: [
+      "En THESHAKHESTUDIUM promovemos la transformación integral con un enfoque sistemático y analítico: cuestionamos convicciones heredadas, tabúes institucionales y relatos oficiales, y facilitamos el descubrimiento colaborativo de realidades ocultas mediante procesos participativos y diálogo constructivo.",
+      "Nuestros valores corporativos —honestidad, veracidad y empatía— guían cada fase del proceso. La honestidad se traduce en transparencia absoluta en metodologías y comunicaciones; la veracidad en un compromiso inquebrantable con la precisión de datos y fuentes; la empatía en la construcción de espacios que integren perspectivas diversas y generen consensos.",
+      "En cada episodio, artículo e imagen, THESHAKHESTUDIUM ofrece preguntas transformadoras que habilitan a individuos y organizaciones a identificar grietas en sus sistemas mentales, generar innovación disruptiva y construir narrativas compartidas que trasciendan el consenso cómodo. No proporcionamos fórmulas universales; facilitamos el diálogo crítico y la co-creación de conocimiento.",
+      "Así, THESHAKHESTUDIUM se posiciona como un partner estratégico en procesos de cambio profundo, capaz de impulsar transformaciones reales a través del análisis riguroso y el trabajo colaborativo, bajo un compromiso de calidad editorial, académico y de diseño que respalda cada paso de nuestra propuesta."
+    ],
+    cta: "Atrévete a desafiar tus creencias"
+  },
+  en: {
+    titulo: "Manifesto",
+    parrafos: [
+      "At THESHAKHESTUDIUM we champion holistic transformation through a systematic and analytical approach: we challenge inherited convictions, institutional taboos and official narratives, and we foster the collaborative discovery of hidden realities through participatory processes and constructive dialogue.",
+      "Our corporate values — honesty, truthfulness and empathy — guide every phase of our work. Honesty manifests as full transparency in our methodologies and communications; truthfulness as an unwavering commitment to the accuracy of data and sources; empathy as the creation of spaces that integrate diverse perspectives and build consensus.",
+      "In every episode, article and image, THESHAKHESTUDIUM poses transformative questions that empower individuals and organizations to uncover cracks in their mental frameworks, spark disruptive innovation and craft shared narratives that transcend comfortable consensus. We do not offer universal formulas; we facilitate critical dialogue and the co-creation of knowledge.",
+      "Thus, THESHAKHESTUDIUM positions itself as a strategic partner in deep-rooted change processes, capable of driving real transformation through rigorous analysis and collaborative work, underpinned by editorial, academic and design excellence at every step of our mission."
+    ],
+    cta: "Dare to challenge your beliefs"
+  }
 };
 
-export default PageManifesto;
+export default function PageManifesto({ language }) {
+  const t = manifestoContent[language];
+
+  return (
+    <section className="max-w-3xl mx-auto px-4 py-16 pt-24">
+      <h2 className="text-4xl font-bold text-gold mb-8 text-center">
+        {t.titulo}
+      </h2>
+      <div className="space-y-6 text-[#0A0A0A] text-lg leading-relaxed">
+        {t.parrafos.map((parrafo, idx) => (
+          <p key={idx}>{parrafo}</p>
+        ))}
+        <span className="cta-highlight font-semibold text-lg cursor-pointer transition"
+          tabIndex={0}
+          onMouseOver={e => e.currentTarget.classList.add('animate-cta')}
+          onMouseOut={e => e.currentTarget.classList.remove('animate-cta')}
+          onFocus={e => e.currentTarget.classList.add('animate-cta')}
+          onBlur={e => e.currentTarget.classList.remove('animate-cta')}
+        >
+          {t.cta}
+        </span>
+      </div>
+      <style>{`
+        .cta-highlight {
+          color: #BD9435;
+          outline: none;
+        }
+        .animate-cta {
+          text-shadow: 0 0 10px #f7e6b5, 0 0 24px #bd9435;
+          animation: cta-pulse 1s infinite alternate;
+        }
+        @keyframes cta-pulse {
+          from { text-shadow: 0 0 8px #f7e6b5, 0 0 24px #bd9435; }
+          to   { text-shadow: 0 0 24px #f7e6b5, 0 0 40px #bd9435; letter-spacing: 1.2px; }
+        }
+      `}</style>
+    </section>
+  );
+}

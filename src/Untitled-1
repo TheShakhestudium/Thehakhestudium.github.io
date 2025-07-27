@@ -1,0 +1,8 @@
+/* Meta tags for SEO and social media sharing */
+<meta property="og:title" content="The Shakhestudium" />
+<meta property="og:description" content="Transformación integral y pensamiento crítico." />
+<meta property="og:image" content="/logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Shakhestudium" />
+<meta name="twitter:description" content="Transformación integral y pensamiento crítico." />
+<meta name="twitter:image" content="/logo.png" />

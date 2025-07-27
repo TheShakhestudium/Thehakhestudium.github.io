@@ -1,53 +1,44 @@
 import React from 'react';
+import { Link } from 'react-scroll';
 
-const LayoutHeader = ({ currentView = 'home', onViewChange = () => {}, language = 'es', onLanguageChange = () => {} }) => {
-  const menuItems = [
-    { id: 'home', es: 'Inicio', en: 'Home' },
-    { id: 'manifesto', es: 'Manifiesto', en: 'Manifesto' },
-    { id: 'podcast', es: 'Podcast', en: 'Podcast' },
-    { id: 'ideas', es: 'El Pensadero', en: 'The Thinkery' },
-    { id: 'services', es: 'Servicios', en: 'Services' },
-    { id: 'legal', es: 'Aviso Legal', en: 'Legal' },
-    { id: 'privacy', es: 'Política de Privacidad', en: 'Privacy Policy' },
-    { id: 'contact', es: 'Contacto', en: 'Contact' },
-  ];
+const menu = [
+  { id: 'home', es: 'Inicio', en: 'Home' },
+  { id: 'manifesto', es: 'Manifiesto', en: 'Manifesto' },
+  { id: 'podcast', es: 'Podcast', en: 'Podcast' },
+  { id: 'ideas', es: 'Pensadero', en: 'Thinkery' },
+  { id: 'services', es: 'Servicios', en: 'Services' },
+  { id: 'contact', es: 'Contacto', en: 'Contact' },
+];
 
+export default function LayoutHeader({ language, onLanguageChange, activeSection, onSectionClick, onOpenModal }) {
   return (
-    <header className="w-full bg-[#0A0A0A] bg-opacity-80 backdrop-blur-md shadow-sm fixed top-0 left-0 z-50 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-[#BD9435] font-playfair">
-          THESHAKHESTUDIUM
-        </h1>
-        <nav className="hidden md:flex space-x-6">
-          {menuItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => onViewChange(item.id)}
-              className={`text-[#B0ACA3] hover:text-[#FFF9ED] transition-colors duration-300 font-inter ${
-                currentView === item.id ? 'font-semibold text-[#BD9435]' : ''
-              }`}
-            >
-              {language === 'es' ? item.es : item.en}
-            </button>
-          ))}
-        </nav>
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={() => onLanguageChange(language === 'es' ? 'en' : 'es')}
-            className="px-3 py-1 rounded-full bg-[#BD9435] text-[#0A0A0A] text-sm font-inter font-medium hover:bg-[#C82330] transition-colors duration-300"
+    <header className="sticky top-0 z-50 bg-[#0A0A0A]/80 backdrop-blur flex items-center justify-between px-8 py-4 shadow-md">
+      <div className="font-bold text-xl text-gold">TheShakhestudium</div>
+      <nav className="flex gap-6">
+        {menu.map(item => (
+          <Link
+            key={item.id}
+            to={item.id}
+            spy={true}
+            smooth={true}
+            offset={-72}
+            duration={600}
+            className={`cursor-pointer px-2 py-1 rounded transition
+              ${activeSection === item.id ? 'text-gold font-bold shadow-gold' : 'hover:text-gold hover:bg-[#FFF9ED]/20'}
+            `}
+            onSetActive={() => onSectionClick(item.id)}
           >
-            {language === 'es' ? 'EN' : 'ES'}
-          </button>
-          <button className="md:hidden text-[#FFF9ED] text-2xl">
-            {/* Simple SVG for a menu icon */}
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
+            {language === 'es' ? item.es : item.en}
+          </Link>
+        ))}
+      </nav>
+      <div className="flex gap-2 items-center">
+        <button onClick={() => onLanguageChange('es')} className={language === 'es' ? 'font-bold underline' : ''}>ES</button>
+        <span>|</span>
+        <button onClick={() => onLanguageChange('en')} className={language === 'en' ? 'font-bold underline' : ''}>EN</button>
+        <button onClick={() => onOpenModal('legal')} className="ml-4 text-xs hover:text-gold">Legal</button>
+        <button onClick={() => onOpenModal('privacy')} className="text-xs hover:text-gold">Privacy</button>
       </div>
     </header>
   );
-};
-
-export default LayoutHeader;
+}

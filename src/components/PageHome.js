@@ -1,72 +1,52 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import logo from '../assets/logo.svg';
 
-const PageHome = ({ language = 'es', onViewChange = () => {} }) => {
-  const slogan = {
-    es: "En silencio y en contracorriente. No para vencer, sino para descifrar.",
-    en: "Silent and against the current. Not to conquer, but to decode.",
-  };
-
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-up');
-          } else {
-            entry.target.classList.remove('animate-fade-in-up');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+export default function PageHome({ language, onSectionClick }) {
+  const t = {
+    es: {
+      bienvenida: "Bienvenido a",
+      titulo: "TheShakhestudium",
+      parrafo: "En silencio y contracorriente. No para vencer, sino para comprender. Este espacio existe para cuestionar la narrativa y dar voz a lo que nadie se atreve a decir en público.",
+      cta: "Comienza el viaje",
+    },
+    en: {
+      bienvenida: "Welcome to",
+      titulo: "TheShakhestudium",
+      parrafo: "Silent and upstream. Not to prevail, but to perceive. This space exists to question the narrative and give voice to what no one dares to say out loud.",
+      cta: "Begin the journey",
     }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+  }[language];
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center text-center p-8 pt-24 overflow-hidden opacity-0 transform translate-y-10 transition-all duration-1000 ease-out">
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://4tsix0yujj.ufs.sh/f/2vMRHqOYUHc05qXptFHlPJ2lHWg1yuOpCAfMUdoxrSLcIq6Z"
-          alt="Background"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-[#0A0A0A] opacity-50"></div>
-      </div>
-      <div className="relative z-10 max-w-4xl mx-auto text-[#FFF9ED]">
-        <h1 className="text-5xl md:text-7xl font-playfair font-bold leading-tight mb-6 text-[#BD9435]">
-          THESHAKHESTUDIUM
+    <section className="relative flex flex-col items-center justify-center min-h-[80vh] w-full">
+      {/* Logo fondo */}
+      <img
+        src={logo}
+        alt="TheShakhestudium Logo"
+        className="absolute inset-0 mx-auto my-auto w-[55vw] max-w-4xl opacity-10 z-0 pointer-events-none select-none"
+        style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', minWidth: 320 }}
+      />
+      <div className="relative z-10 flex flex-col items-center w-full">
+        <span className="text-2xl mb-2">{t.bienvenida}</span>
+        <h1
+          className="font-bold text-5xl md:text-6xl mb-6 text-gold transition cursor-pointer"
+          tabIndex={0}
+          onMouseOver={e => e.currentTarget.classList.add('animate-pulse-gold')}
+          onMouseOut={e => e.currentTarget.classList.remove('animate-pulse-gold')}
+          onFocus={e => e.currentTarget.classList.add('animate-pulse-gold')}
+          onBlur={e => e.currentTarget.classList.remove('animate-pulse-gold')}
+        >
+          {t.titulo}
         </h1>
-        <p className="text-xl md:text-2xl font-inter mb-10">
-          {slogan[language]}
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-          <button
-            onClick={() => onViewChange('podcast')}
-            className="px-8 py-4 bg-[#BD9435] text-[#FFF9ED] text-lg font-inter font-medium rounded-full shadow-lg hover:bg-[#C82330] transition-all duration-300 transform hover:scale-105"
-          >
-            {language === 'es' ? 'Escucha el podcast' : 'Listen to the podcast'}
-          </button>
-          <button
-            onClick={() => onViewChange('manifesto')}
-            className="px-8 py-4 border-2 border-[#BD9435] text-[#FFF9ED] text-lg font-inter font-medium rounded-full shadow-lg hover:bg-[#BD9435] hover:text-[#0A0A0A] transition-all duration-300 transform hover:scale-105"
-          >
-            {language === 'es' ? 'Explora el manifiesto' : 'Explore the manifesto'}
-          </button>
-        </div>
+        <p className="text-lg max-w-2xl mb-8 text-center text-[#0A0A0A]">{t.parrafo}</p>
+        <button
+          className="cta-minimal font-bold text-xl mt-8 focus:outline-none transition text-gold hover:shadow-gold"
+          style={{ background: 'none', border: 'none', color: 'inherit', padding: 0 }}
+          onClick={() => onSectionClick && onSectionClick('manifesto')}
+        >
+          {t.cta}
+        </button>
       </div>
     </section>
   );
-};
-
-export default PageHome;
+}

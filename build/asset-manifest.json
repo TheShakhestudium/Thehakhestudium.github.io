@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/TheShakhestudium/static/css/main.1d4cab10.css",
-    "main.js": "/TheShakhestudium/static/js/main.84c5e5e1.js",
-    "index.html": "/TheShakhestudium/index.html",
-    "main.1d4cab10.css.map": "/TheShakhestudium/static/css/main.1d4cab10.css.map",
-    "main.84c5e5e1.js.map": "/TheShakhestudium/static/js/main.84c5e5e1.js.map"
+    "main.css": "/static/css/main.1b67e40e.css",
+    "main.js": "/static/js/main.e4a757ac.js",
+    "static/media/logo.svg": "/static/media/logo.0345725a284d7aae30ddcf6409cf5567.svg",
+    "index.html": "/index.html",
+    "main.1b67e40e.css.map": "/static/css/main.1b67e40e.css.map",
+    "main.e4a757ac.js.map": "/static/js/main.e4a757ac.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d4cab10.css",
-    "static/js/main.84c5e5e1.js"
+    "static/css/main.1b67e40e.css",
+    "static/js/main.e4a757ac.js"
   ]
 }

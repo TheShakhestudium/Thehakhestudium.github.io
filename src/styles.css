@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ...código existente de Tailwind... */
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(40px);}
+  to   { opacity: 1; transform: translateY(0);}
+}
+.animate-fade-in-up {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  animation: fade-in-up 1s ease-out;
+}
+
+/* Meta tags for SEO and social media sharing */
+/* Move these meta tags to your HTML <head> section. */
+
+.title-gold {
+  color: #BD9435;
+  transition: color 0.3s, text-shadow 0.3s;
+}
+.title-gold:hover {
+  text-shadow: 0 0 12px #f7e6b5, 0 0 24px #bd9435;
+  color: #FFD700;
+}
+.section-transition {
+  transition: opacity 0.5s, transform 0.5s;
+}
+section {
+  text-align: justify;
+}
+section h1, section h2, section h3, section h4 {
+  text-align: center;
+}

@@ -1,6 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 
-const PagePrivacy = ({ language = 'es' }) => {
+export default function PagePrivacy({ language }) {
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString(language === 'es' ? 'es-MX' : 'en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
   const content = {
     es: {
       title: 'Política de Privacidad',
@@ -34,7 +41,6 @@ const PagePrivacy = ({ language = 'es' }) => {
       section8Text: 'HTTPS/TLS, copias de seguridad, controles de acceso y formación interna.',
       section9Title: '9. Actualizaciones',
       section9Text: 'Podemos actualizar esta política. La versión vigente y la fecha aparecerán aquí.',
-      lastUpdated: 'Última actualización: 2025-07-XX',
     },
     en: {
       title: 'Privacy Policy',
@@ -101,55 +107,56 @@ const PagePrivacy = ({ language = 'es' }) => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="container mx-auto px-4 py-16 pt-24 opacity-0 transform translate-y-10 transition-all duration-1000 ease-out">
-      <div className="bg-[#0A0A0A] rounded-2xl shadow-xl p-8 md:p-12 lg:p-16">
-        <h2 className="text-4xl font-playfair font-semibold text-[#BD9435] mb-8 text-center">
-          {content[language].title}
-        </h2>
-        <div className="space-y-6 text-[#FFF9ED] text-lg font-inter leading-relaxed">
-          <p><strong>{content[language].controller}</strong><br />{content[language].controllerName}</p>
-          <p><strong>{content[language].contact}</strong> {content[language].contactEmail}</p>
+    <section className="max-w-3xl mx-auto px-4 py-16 pt-24">
+      <h2 className="text-4xl font-bold text-gold mb-8 text-center">
+        {content[language].title}
+      </h2>
+      <div className="space-y-6 text-[#0A0A0A] text-lg leading-relaxed">
+        <p><strong>{content[language].controller}</strong><br />{content[language].controllerName}</p>
+        <p><strong>{content[language].contact}</strong> {content[language].contactEmail}</p>
 
-          <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section1Title}</h3>
-          <p>{content[language].section1Text}</p>
+        <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section1Title}</h3>
+        <p>{content[language].section1Text}</p>
 
-          <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section2Title}</h3>
-          <p>{content[language].section2Forms}</p>
-          <p>{content[language].section2Newsletter}</p>
-          <p>{content[language].section2Analytics}</p>
-          <p>{content[language].section2Logs}</p>
-          {language === 'en' && <p>{content[language].section2Access}</p>}
+        <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section2Title}</h3>
+        <p>{content[language].section2Forms}</p>
+        <p>{content[language].section2Newsletter}</p>
+        <p>{content[language].section2Analytics}</p>
+        <p>{content[language].section2Logs}</p>
+        {language === 'en' && <p>{content[language].section2Access}</p>}
 
-          <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section3Title}</h3>
-          <p>{content[language].section3Necessary}</p>
-          <p>{content[language].section3Performance}</p>
-          <p>{content[language].section3Functional}</p>
+        <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section3Title}</h3>
+        <p>{content[language].section3Necessary}</p>
+        <p>{content[language].section3Performance}</p>
+        <p>{content[language].section3Functional}</p>
 
-          <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section4Title}</h3>
-          <p>{content[language].section4Messages}</p>
-          <p>{content[language].section4Subscribers}</p>
-          <p>{content[language].section4Analytics}</p>
+        <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section4Title}</h3>
+        <p>{content[language].section4Messages}</p>
+        <p>{content[language].section4Subscribers}</p>
+        <p>{content[language].section4Analytics}</p>
 
-          <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section5Title}</h3>
-          <p>{content[language].section5Text}</p>
+        <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section5Title}</h3>
+        <p>{content[language].section5Text}</p>
 
-          <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section6Title}</h3>
-          <p>{content[language].section6Text}</p>
-          <p>{content[language].section6Request}</p>
+        <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section6Title}</h3>
+        <p>{content[language].section6Text}</p>
+        <p>{content[language].section6Request}</p>
 
-          <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section7Title}</h3>
-          <p>{content[language].section7Text}</p>
+        <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section7Title}</h3>
+        <p>{content[language].section7Text}</p>
 
-          <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section8Title}</h3>
-          <p>{content[language].section8Text}</p>
+        <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section8Title}</h3>
+        <p>{content[language].section8Text}</p>
 
-          <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section9Title}</h3>
-          <p>{content[language].section9Text}</p>
-          <p className="text-sm mt-4">{content[language].lastUpdated}</p>
-        </div>
+        <h3 className="text-2xl font-playfair font-semibold text-[#BD9435]">{content[language].section9Title}</h3>
+        <p>{content[language].section9Text}</p>
+        <p className="text-sm mt-4">{content[language].lastUpdated}</p>
+      </div>
+      <div className="text-sm text-gray-500 mt-8">
+        {language === 'es'
+          ? `Última actualización: ${formattedDate}`
+          : `Last updated: ${formattedDate}`}
       </div>
     </section>
   );
 };
-
-export default PagePrivacy;
